@@ -94,7 +94,7 @@ A prediction you can't write R5 for doesn't go in the book. That single rule sep
 ## Install
 
 ```bash
-git clone https://github.com/ysfuture/cys-bookwriting-skills.git
+git clone https://github.com/idoforgod/cys-bookwriting-skills.git
 cd cys-bookwriting-skills
 ./install.sh --book-root ~/my-book
 ```

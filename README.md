@@ -92,7 +92,7 @@ R5를 쓸 수 없는 예측은 책에 넣지 않는다. 이 규칙 하나가 미
 ## 설치
 
 ```bash
-git clone https://github.com/ysfuture/cys-bookwriting-skills.git
+git clone https://github.com/idoforgod/cys-bookwriting-skills.git
 cd cys-bookwriting-skills
 ./install.sh --book-root ~/my-book
 ```
