@@ -1,0 +1,14 @@
+# forecast-registry.yaml — 예측 대장 (P-NNN)
+#
+# 책에 담는 모든 미래 예측을 R1~R5 규칙으로 강제 검증한다.
+#   R1 quantitative_anchor  정량 앵커 필수 (예: "10년 내 3배")
+#   R2 chapter_role         1층_콜드오픈 | 2층_분석 | 3층_함의
+#   R3 system_loops         L1~L7 중 명시
+#   R4 authority_layers     서로 다른 권위 등급 2층 이상
+#   R5 verification_signal  / falsifies_if — 무엇이 관측되면 맞고 틀린지
+#
+# R5가 이 도구의 핵심이다. 반증 조건 없는 예측은 예측이 아니라 수사다.
+
+version: "2.0"
+schema: forecast-registry
+predictions: []

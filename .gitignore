@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────────
+# 개인 책 프로젝트 — 이 저장소에 절대 들어와서는 안 되는 것
+#
+# 원칙: 당신의 책(BOOK_ROOT)은 이 저장소 *바깥*에 둔다.
+# 그래도 실수로 저장소 안에서 `bookwriting init` 을 돌렸을 때
+# 원고·설정·개인 자료가 공개 저장소로 밀려 올라가지 않도록 막는다.
+# ─────────────────────────────────────────────────────────────
+/master/
+/chapters/
+/inbox/
+/bookidea/
+/workflows/
+/bookwriting/
+/book/
+*-registry.yaml
+!templates/*-registry.yaml
+book-config.yaml
+!templates/book-config.yaml
+*.local.yaml
+*.local.md
+.env
+.env.*
+*.credentials
+*.token
+
+# 내부 작업 기록 (배포 대상 아님)
+/_progress/
+/_work/
+*_HANDOFF.md
+*_TODO.md
+SESSION_STATE.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# macOS / 편집기
+.DS_Store
+.AppleDouble
+.idea/
+.vscode/
+*.swp
+*~

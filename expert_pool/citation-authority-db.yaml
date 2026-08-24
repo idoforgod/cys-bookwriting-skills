@@ -1,0 +1,529 @@
+# Citation Authority DB
+#
+# bookwriting의 citation-gate가 출처 *권위 5층 등급*을 매핑할 때 참조하는 DB.
+# 저자 v1 권위 5층 (skeleton.md "권위 구조") 그대로 구현.
+#
+# Grade A = Layer 1 창업자 증언 (가장 강력)
+# Grade B = Layer 2 미래학자 시스템 사고 (저자 본인 척추)
+# Grade C = Layer 3 인접 학문의 통찰
+# Grade D = Layer 4 사상가·역사가의 진단
+# Grade E = Layer 5 역사적 평행
+# Grade out = 인용 부적합 (블로그·SNS·미검증)
+
+version: "1.0"
+schema: citation-authority-db
+created: 2026-05-24
+last_updated: 2026-05-24
+
+authority_grades:
+
+  # ═══════════════════════════════════════════════════════
+  # Grade A — Layer 1 창업자 증언
+  # AGI 책의 가장 강력한 자산. AGI를 만드는 당사자의 자기 고백
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-A-001
+    author_pattern: "Dario Amodei|다리오 아모데이"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "Anthropic CEO"
+    note: "AGI 책 핵심 자산 — Machines of Loving Grace + Davos 2025"
+
+  - id: AUTH-A-002
+    author_pattern: "Demis Hassabis|데미스 하사비스"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "Google DeepMind CEO"
+    note: "AlphaFold·Davos 2025 평행 진단"
+
+  - id: AUTH-A-003
+    author_pattern: "Sam Altman|샘 알트만"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "OpenAI CEO"
+
+  - id: AUTH-A-004
+    author_pattern: "Elon Musk|일론 머스크"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "xAI·Tesla CEO (창업자 차원)"
+    note: "수직 이륙·100배 스케일·2026 AGI 도래 (창업자 발언으로 인용)"
+
+  - id: AUTH-A-005
+    author_pattern: "Geoffrey Hinton|제프리 힌튼"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "AI 대부"
+    note: "디지털 초지능·불멸의 지능"
+
+  - id: AUTH-A-006
+    author_pattern: "Ray Kurzweil|레이 커즈와일"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    role: "특이점 이론"
+
+  - id: AUTH-A-007
+    author_pattern: "Ilya Sutskever|일리야 수츠케버"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+
+  - id: AUTH-A-008
+    author_pattern: "Andrej Karpathy|안드레이 카파시"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    note: "이해 vs 사고 외주화 통찰 (skeleton.md §10)"
+
+  # ⭐ Round 7 #C6.1 Critical — 여성 AI 권위 강제 추가 (성별 편향 수정)
+  - id: AUTH-A-009
+    author_pattern: "Fei-Fei Li|페이페이 리|페이페이"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언·AI 연구"
+    note: "ImageNet 창시자·Stanford HAI"
+
+  - id: AUTH-A-010
+    author_pattern: "Daphne Koller|다프네 콜러"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언"
+    note: "Coursera·Insitro 창업자"
+
+  - id: AUTH-A-011
+    author_pattern: "Timnit Gebru|팀니트 게브루"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언·AI Ethics"
+    note: "Distributed AI Research·전 Google AI Ethics"
+
+  - id: AUTH-A-012
+    author_pattern: "Margaret Mitchell|마가렛 미첼"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언·AI Ethics"
+    note: "Hugging Face·전 Google AI Ethics"
+
+  - id: AUTH-A-013
+    author_pattern: "Emily Bender|에밀리 벤더"
+    grade: A
+    layer: 1
+    layer_name: "AI 언어학자"
+    note: "Stochastic Parrots 공동 저자·University of Washington"
+
+  # ⭐ Round 7 #C2.4 Critical — 신학 권위 신설 (Grade F)
+  - id: AUTH-F-001
+    author_pattern: "Calvin|칼빈|John Calvin"
+    grade: F
+    layer: 6
+    layer_name: "신학 권위 (Reformed)"
+    note: "Institutes of the Christian Religion·저자 sermon-calvin-institutes"
+
+  - id: AUTH-F-002
+    author_pattern: "Augustine|어거스틴|Aurelius Augustinus"
+    grade: F
+    layer: 6
+    layer_name: "신학 권위 (Patristic)"
+    note: "저자 sermon-augustine-coaching"
+
+  - id: AUTH-F-003
+    author_pattern: "Herman Bavinck|헤르만 바빙크|바빙크"
+    grade: F
+    layer: 6
+    layer_name: "신학 권위 (Neo-Calvinist)"
+    note: "Reformed Dogmatics·저자 sermon-bavinck-coaching"
+
+  - id: AUTH-F-004
+    author_pattern: "Martyn Lloyd-Jones|로이드 존스|MLJ"
+    grade: F
+    layer: 6
+    layer_name: "신학 권위 (Preacher)"
+    note: "저자 sermon-lloyd-jones-coaching"
+
+  - id: AUTH-F-005
+    author_pattern: "Martin Luther|마르틴 루터"
+    grade: F
+    layer: 6
+    layer_name: "신학 권위 (Reformation)"
+    note: "저자 sermon-luther-coaching"
+
+  # ⭐ Round 7 #C10.7 Critical — 정신건강 권위 (Grade A — 임상 권위)
+  - id: AUTH-A-014
+    publication_pattern: "WHO|World Health Organization|세계보건기구"
+    grade: A
+    layer: 1
+    layer_name: "정신건강 임상 권위 (WHO)"
+    note: "safe messaging guidelines·자살예방"
+
+  - id: AUTH-A-015
+    publication_pattern: "American Psychiatric Association|APA|DSM"
+    grade: A
+    layer: 1
+    layer_name: "정신의학 임상 권위"
+
+  - id: AUTH-A-016
+    publication_pattern: "대한정신건강의학회|KSPP|한국자살예방협회"
+    grade: A
+    layer: 1
+    layer_name: "한국 정신건강 임상 권위"
+
+  # ⭐ Round 7 #C5.4 — 환경 권위 강화
+  - id: AUTH-A-017
+    publication_pattern: "IPCC|UNEP|IEA|환경부|UN Environment Programme"
+    grade: A
+    layer: 1
+    layer_name: "환경·기후 임상 권위"
+
+  # ⭐ Round 7 #C6.2 — 여성 사상가 (Grade C·D)
+  - id: AUTH-C-005
+    author_pattern: "Shoshana Zuboff|쇼샤나 주보프"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — Surveillance Capitalism"
+
+  - id: AUTH-C-006
+    author_pattern: "Kate Crawford|케이트 크로포드"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — Atlas of AI·USC Annenberg"
+
+  - id: AUTH-D-004
+    author_pattern: "Sherry Turkle|셰리 터클"
+    grade: D
+    layer: 4
+    layer_name: "사상가 — MIT·기술과 인간 관계"
+
+  - id: AUTH-D-005
+    author_pattern: "Donna Haraway|도나 해러웨이"
+    grade: D
+    layer: 4
+    layer_name: "사상가 — Cyborg Manifesto"
+
+  # ⭐ Round 15 (#H2~#H10 보강) — 한의학·민속·체화·행동유전·국제법·헌재·재앙 거버넌스 권위 신설
+
+  # 한국 한의학 (Round 14 #H2)
+  - id: AUTH-A-022
+    publication_pattern: "한국한의학연구원|KIOM|국가한의약진흥원"
+    grade: A
+    layer: 1
+    layer_name: "한국 한의학·동서통합의학 공식 권위"
+
+  - id: AUTH-C-008
+    author_pattern: "허준|이제마"
+    grade: C
+    layer: 3
+    layer_name: "한국 전통의학 사상가"
+
+  # 행동유전학·후성유전 (Round 14 #H5)
+  - id: AUTH-A-023
+    author_pattern: "Robert Plomin|로버트 플로민"
+    grade: A
+    layer: 1
+    layer_name: "행동유전학 — Blueprint·King's College London"
+
+  - id: AUTH-A-024
+    author_pattern: "Eric Turkheimer|에릭 터크하이머"
+    grade: A
+    layer: 1
+    layer_name: "행동유전학 — University of Virginia"
+
+  - id: AUTH-A-025
+    author_pattern: "Moshe Szyf|모셰 짚"
+    grade: A
+    layer: 1
+    layer_name: "후성유전학 — McGill University"
+
+  # Catastrophic Risk Governance (Round 14 #H9)
+  - id: AUTH-A-026
+    author_pattern: "Toby Ord|토비 오드"
+    grade: A
+    layer: 1
+    layer_name: "Existential Risk — Oxford FHI"
+    note: "The Precipice (2020)"
+
+  - id: AUTH-A-027
+    author_pattern: "Nick Bostrom|닉 보스트롬"
+    grade: A
+    layer: 1
+    layer_name: "AI Safety·Superintelligence — Oxford FHI"
+
+  - id: AUTH-A-028
+    publication_pattern: "CSER|FHI|GCRI|Open Phil GCR|Cambridge Existential"
+    grade: A
+    layer: 1
+    layer_name: "Catastrophic Risk 기관 권위"
+
+  - id: AUTH-A-029
+    publication_pattern: "IPCC AR\\d+|IPCC Key Risks"
+    grade: A
+    layer: 1
+    layer_name: "IPCC Catastrophic Risk Framework"
+
+  # 한국 헌법재판소·개인정보 (Round 14 #H10)
+  - id: AUTH-A-030
+    publication_pattern: "대한민국 헌법재판소|헌재|헌법재판소 결정"
+    grade: A
+    layer: 1
+    layer_name: "한국 헌재 기본권 결정"
+
+  - id: AUTH-A-031
+    publication_pattern: "한국 개인정보보호위원회|PIPC|개인정보위"
+    grade: A
+    layer: 1
+    layer_name: "한국 개인정보 공식 권위"
+
+  # 한국 민속학 (Round 14 #H4)
+  - id: AUTH-G-001
+    author_pattern: "이부영|서대석|신동흔"
+    grade: G
+    layer: 7
+    layer_name: "한국 민속학·구비문학 — 토착 지혜 (Layer 7 신설)"
+
+  # 한국 문화인류학 (Round 14 #H7 + #G2.2 deferred 처리)
+  - id: AUTH-C-009
+    author_pattern: "조한혜정|김은실|전경수|이문웅"
+    grade: C
+    layer: 3
+    layer_name: "한국 문화인류학 — 가족·세대·민속"
+
+  # 이세돌 living_person 동의 메타 (Round 12 #G6.2 Round 13 patch #20 완료 — 본 메타 재명시)
+  # AUTH-D-006 living_person: true·consent_status: required_before_quote (이미 명시)
+  # ⚠ Round 18 #K4.2·#K7.1 Critical 수정 — trauma_bearing_witness_category 블록을 authority_grades 리스트 외부로 이동 (yaml 파싱 실패 해소)
+
+  - id: AUTH-A-pub-001
+    # ⚠ Round 8 #D2.2 Critical 수정 — arxiv는 peer-review 전 preprint이므로 Grade A에서 제외
+    publication_pattern: "darioamodei.com|deepmind.google|openai.com|anthropic.com|xai|nature.com|science.org"
+    grade: A
+    layer: 1
+    layer_name: "창업자 증언·peer-reviewed 논문"
+    note: "peer-review 통과 학술지·창업자 공식 publication만"
+
+  - id: AUTH-A-preprint-001
+    # Round 8 #D2.2 — arxiv·biorxiv·SSRN 등 preprint 별도 Grade
+    publication_pattern: "arxiv.org|biorxiv|ssrn"
+    grade: A_preprint
+    layer: 1
+    layer_name: "preprint (peer-review 전)"
+    note: "Grade A보다 약함. 학술지 KCI 인용 시 *peer-review 통과 여부 확인 필수*"
+
+  - id: AUTH-A-type-001
+    source_type: "academic_paper"
+    grade: A
+    layer: 1
+    layer_name: "학술 논문"
+
+  - id: AUTH-A-type-002
+    source_type: "official_report"
+    # ⚠ Round 16 #I6.1 Critical 수정 — publications list (M3 미파싱) → publication_pattern 단일 정규식
+    publication_pattern: "OECD|World Bank|통계청|KOSIS|한국은행|BoK|UN|UNCTAD|UNDP|IMF|국세청|국방부|기재부|행안부|국정원|감사원"
+    grade: A
+    layer: 1
+    layer_name: "공식 보고서·통계청 데이터 (Round 16 #I6 정규식 통일)"
+    data_vintage_required: true        # Round 16 #I6.2 — table_id·last_updated 강제
+
+  # ═══════════════════════════════════════════════════════
+  # Grade B — Layer 2 미래학자 시스템 사고 (저자 본인 척추)
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-B-001
+    author_pattern: "{{저자명}}|저자 본인"
+    grade: B
+    layer: 2
+    layer_name: "미래학자 시스템 사고"
+    note: "저자 본인 — 책의 사상적 척추. 약신호·시나리오·정량 프레임."
+
+  - id: AUTH-B-pub-001
+    publication_pattern: "{{저자 이전 저서 제목}}|{{소속 기관명}}"
+    grade: B
+    layer: 2
+    layer_name: "미래학자 시스템 사고"
+
+  # ═══════════════════════════════════════════════════════
+  # Grade C — Layer 3 인접 학문 통찰
+  # AGI를 입체화하는 학제적 권위
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-C-001
+    author_pattern: "김대식"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — 뇌과학"
+    note: "신경학·뇌과학 (skeleton.md 명시)"
+
+  - id: AUTH-C-002
+    author_pattern: "유현준"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — 도시건축학"
+
+  - id: AUTH-C-003
+    author_pattern: "Yanis Varoufakis|야니스 바루파키스"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — 정치경제 (테크노봉건제)"
+
+  - id: AUTH-C-004
+    author_pattern: "Jeremy Rifkin|제러미 리프킨"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — 한계비용 제로 사회"
+
+  - id: AUTH-C-pub-001
+    publication_pattern: "MIT Technology Review|Bloomberg|NYT|Wired|Wall Street Journal|Financial Times"
+    grade: C
+    layer: 3
+    layer_name: "인접 학문 — 전문 매체"
+
+  # ═══════════════════════════════════════════════════════
+  # Grade D — Layer 4 사상가·역사가 진단
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-D-001
+    author_pattern: "Yuval Noah Harari|유발 하라리"
+    grade: D
+    layer: 4
+    layer_name: "사상가 — 인간 진화·역사"
+
+  - id: AUTH-D-002
+    author_pattern: "Elon Musk (사상적 발언)|일론 머스크 (사상적)"
+    grade: D
+    layer: 4
+    layer_name: "사상가 — 부트로더 메타포 등 (사상적 발언일 때)"
+    note: "창업자 발언이면 Grade A, 사상적 메타포면 Grade D — 발언 성격에 따라 매핑"
+
+  - id: AUTH-D-003
+    publication_pattern: "Fermi Paradox|페르미 역설|Contact (영화)|콘택트"
+    grade: D
+    layer: 4
+    layer_name: "사상가·문화 — 대필터·우주적 좌표"
+
+  # ═══════════════════════════════════════════════════════
+  # Grade E — Layer 5 역사적 평행
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-E-001
+    source_type: "historical_event"
+    grade: E
+    layer: 5
+    layer_name: "역사 평행"
+    examples:
+      - "1930년대 대공황"
+      - "핵무기 통제 (Manhattan Project·NPT)"
+      - "산업혁명의 러다이트"
+      - "자동차 도입기"
+      - "앵글로색슨 용병의 영국 정복"
+      - "바이마르 의회 (1930년대)"
+
+  - id: AUTH-E-pub-001
+    publication_pattern: "사료|역사서|archival"
+    grade: E
+    layer: 5
+    layer_name: "역사 사료"
+
+  # ═══════════════════════════════════════════════════════
+  # Grade out — 인용 부적합 (참고만)
+  # ═══════════════════════════════════════════════════════
+  - id: AUTH-OUT-001
+    source_type: "blog|sns|tweet|reddit|medium"
+    grade: out
+    note: "참고만 — 인용 출처로 부적합. 저자 명시 시 Grade D로 격상 가능"
+
+  - id: AUTH-OUT-002
+    source_pattern: "한 보고서에 따르면|전문가들이 말한다|최근 연구에서|어느 분석에 따르면"
+    grade: out
+    note: "형식 모호 — 할루시네이션 의심 신호 2"
+
+  # ═══════════════════════════════════════════════════════
+  # 저자 추가 영역 — 후일 저자가 자기 권위 풀에서 추가
+  # ═══════════════════════════════════════════════════════
+  # - id: AUTH-X-NNN
+  #   author_pattern: "..."
+  #   grade: ...
+  #   layer: ...
+
+# ═══════════════════════════════════════════════════════
+# 매핑 정책 (citation-gate가 따르는 규칙)
+# ═══════════════════════════════════════════════════════
+matching_policy:
+  match_priority:
+    - author_pattern                      # 1순위 — 저자명
+    - publication_pattern                 # 2순위 — 매체명
+    - source_type                          # 3순위 — 출처 종류
+
+  unmatched_handling:
+    action: assign_temporary_grade_C       # 매칭 안 되면 임시 Grade C
+    notify_user: true                      # 저자 알림 + DB 보강 권장
+    log_path: _progress/citation-authority-learning-log.md
+
+  case_sensitive: false
+  partial_match: true                      # 부분 일치 허용
+  cross_grade_warning: true                # 같은 author가 여러 grade 매칭 시 warning
+
+# ═══════════════════════════════════════════════════════
+# 저자 v1 권위 5층 (skeleton.md) 호환 매핑
+# ═══════════════════════════════════════════════════════
+v1_layer_mapping:
+  Layer_1_창업자_증언: A
+  Layer_2_미래학자_시스템_사고: B
+  Layer_3_인접_학문_통찰: C
+  Layer_4_사상가_역사가_진단: D
+  Layer_5_역사적_평행: E
+
+# ═══════════════════════════════════════════════════════
+# ⭐⭐ Round 17 #J6.1 + Round 18 #K7.1 Critical
+# Trauma-Bearing Witness Category Protocol (저자 진북 #5·#6)
+# ⚠ authority_grades 리스트 외부 — top-level 별도 블록
+# ═══════════════════════════════════════════════════════
+trauma_bearing_witness_category:
+  enabled: true
+  categories:
+    - id: war_survivor
+      examples:
+        - "한국전쟁 참전용사"
+        - "베트남전·이라크전 참전자"
+        - "Khmer Rouge 생존자"
+    - id: mass_disaster_bereaved
+      examples:
+        - "세월호 유가족"
+        - "이태원 참사 유가족"
+        - "삼풍·성수대교 유가족"
+        - "9·11 유가족"
+    - id: state_violence_victim
+      examples:
+        - "5·18 광주민주화운동 피해자"
+        - "제주 4·3 유가족"
+        - "정치적 박해 피해자"
+    - id: sexual_violence_survivor
+      examples:
+        - "성폭력·성착취 생존자"
+    - id: pandemic_loss_bereaved
+      examples:
+        - "COVID-19 유가족"
+    - id: deceased_digital_remnant   # Round 18 #K7.1 신규
+      examples:
+        - "사망자 SNS·블로그·녹음·영상·voice clone 데이터"
+      protocol_extra: "한국 개인정보보호법 제22조의2 (사망자 정보) 인용 강제"
+  protocol:
+    consent_status: required_before_quote
+    safe_messaging_invoke: true
+    hotline_required: true
+    anonymity_default: true
+    re_traumatization_warning: true
+    citation_gate_priority: critical
+  detection_trigger_keywords:
+    - "참전"
+    - "생존자"
+    - "유가족"
+    - "피해자"
+    - "trauma"
+    - "5·18"
+    - "4·3"
+    - "세월호"
+    - "이태원"
+    - "9·11"
+    - "성폭력"
+    - "성착취"
+    - "고문"
+    - "폭력 피해"
+  fix_action: "Safe Messaging Gatekeeper (페르소나 9) 즉시 발동 + 저자 묶음 escalate"

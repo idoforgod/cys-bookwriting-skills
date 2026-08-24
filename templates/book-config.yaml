@@ -1,0 +1,261 @@
+# book-config.yaml — 책 프로젝트 단일 설정 파일
+#
+# `bookwriting init` 이 이 템플릿을 복사해 $BOOK_ROOT/master/book-config.yaml 로 놓는다.
+# {{...}} 로 남은 자리는 당신이 직접 채워야 하는 곳이다.
+#
+# 가장 중요한 곳은 `voice_guidelines` 다. 이 도구가 당신의 문장처럼 쓰게 만드는 유일한 근거이며,
+# 비워 두면 문체 게이트(voice-gate)가 사실상 작동하지 않는다.
+
+version: "2.0"
+project_name: "{{내 책 제목}}"
+author: "{{저자명}}"
+created: "{{생성일}}"
+last_updated: "{{생성일}}"
+
+# ───────────────────────────────────────────────────────
+# 1. 검색 경로 — 이 도구가 근거 자료를 찾아도 되는 범위
+#    여기에 등록되지 않은 경로는 절대 읽지 않는다(자기완결 원칙).
+# ───────────────────────────────────────────────────────
+search_paths:
+  tier_1_always:                   # 항상 검색 — 책 프로젝트 자신
+    - "{{BOOK_ROOT}}/"
+
+  tier_2_explicit:                 # 당신이 명시 등록한 개인 자료
+    # 예) 이전 저서 원고 · 강의록 · 칼럼 · Obsidian vault
+    # - ~/Documents/내_강의록/
+    # - ~/Documents/이전저서/
+    []
+
+# ───────────────────────────────────────────────────────
+# 2. 검색 차단 패턴 — 민감 정보 보호 (지우지 말 것)
+# ───────────────────────────────────────────────────────
+exclude_patterns:
+  # 자격·토큰·키
+  - "*credentials*"
+  - "*.env*"
+  - "*secret*"
+  - "*token*"
+  - "*tokens.json"
+  - "*auth_tokens*"
+  - "*.token"
+  - "*oauth*"
+  - "*api_key*"
+  - "*private*"
+  # SSH·SSL·GPG 키
+  - ".ssh/*"
+  - "id_rsa*"
+  - "id_ed25519*"
+  - "id_dsa*"
+  - "id_ecdsa*"
+  - "*.pem"
+  - "*.key"
+  - "*.crt"
+  - "*.cer"
+  - "*.pfx"
+  - "*.p12"
+  - ".gnupg/*"
+  - "*.gpg"
+  # 클라우드 자격
+  - ".aws/*"
+  - ".azure/*"
+  - ".docker/*"
+  - ".netrc"
+  # 비밀번호 관리자
+  - "*.kdbx"
+  - "*.1password*"
+  # 일반
+  - "*.git/*"
+  - "*.DS_Store"
+  - "*__pycache__*"
+  - "*node_modules*"
+  - "*.pyc"
+  # 당신이 추가할 민감 영역 (자유 추가):
+  # - "*개인_재정*"
+  # - "*가족*"
+  # - "*상담_기록*"
+
+# ───────────────────────────────────────────────────────
+# 3. Voice 가이드라인 — 문체 게이트의 판단 기준 ⭐ 반드시 채울 것
+# ───────────────────────────────────────────────────────
+voice_guidelines:
+  vocabulary:
+    preferred:                     # 당신이 즐겨 쓰는 표현 (5개 이상 권장)
+      # - "당신의 핵심 개념어 1"
+      # - "당신의 핵심 개념어 2"
+      []
+    avoid:                         # 당신이 피하는 표현
+      # - "단선적 인과 표현"
+      # - "추상적 일반론"
+      []
+
+  sentence:
+    max_length_chars: 80           # 한 문장 길이 상한 (50-200)
+    preference: "단문 + 능동태"
+    avoid: ["중복 수식", "과도한 종속절"]
+
+  structure:
+    paragraph_pattern: "명제→근거→사례→통찰"
+    section_pattern: "1층 콜드오픈→2층 분석→3층 함의"
+    layer_ratios:                  # 각 층의 분량 비율 (%) — 합계 100
+      narrative: [10, 15]
+      analysis: [60, 70]
+      implications: [15, 25]
+
+  prohibitions:
+    - "외국어 단어 무분별 사용 (한국어 우선)"
+    - "추상적 일반론 (구체적 시나리오 필수)"
+    - "단일 권위만 인용 (다층 권위 강제)"
+    - "허위 인용·검증되지 않은 통계"
+
+  signature_expressions:           # 당신만의 문장 패턴 — 있으면 문체 재현율이 크게 오른다
+    # - "이 책은 X가 아니라 Y를 다룬다"
+    # - "셋 중 하나를 선택하는 것이 아니다"
+    []
+
+# ───────────────────────────────────────────────────────
+# 4. 장 구성 — chapter 명령이 참조하는 목차 대장
+# ───────────────────────────────────────────────────────
+chapter_manifest:
+  chapters:
+    - id: "ch01"
+      order: 1
+      part: "1부"
+      title: "{{1장 제목}}"
+      chapter_role: "1층_콜드오픈"
+      short_description: "{{1장 한 줄 요약}}"
+    - id: "ch02"
+      order: 2
+      part: "1부"
+      title: "{{2장 제목}}"
+      chapter_role: "2층_분석"
+      short_description: "{{2장 한 줄 요약}}"
+    - id: "ch03"
+      order: 3
+      part: "2부"
+      title: "{{3장 제목}}"
+      chapter_role: "3층_함의"
+      short_description: "{{3장 한 줄 요약}}"
+
+# ───────────────────────────────────────────────────────
+# 5. 사이클 매크로 트리거 — 언제 상위 단계를 권할지
+# ───────────────────────────────────────────────────────
+cycle_triggers:
+  micro_count_for_relink:           5
+  micro_count_for_structure_review: 10
+  evidenced_count_for_insight:      5
+  polished_ratio_for_structure:     0.8
+  concurrent_cycle_soft_limit:      5
+  registry_archive_threshold:       100
+
+# ───────────────────────────────────────────────────────
+# 6. 인용 게이트 정책 — 할루시네이션 차단의 본체
+# ───────────────────────────────────────────────────────
+citation_gate_policy:
+  enabled: true
+  apply_to_all_sub_skill_outputs: true
+
+  authority_grades:
+    A: "창업자·당사자 증언·peer-reviewed 논문 (Layer 1)"
+    A_preprint: "preprint (arxiv 등 peer-review 전)"
+    B: "해당 분야 전문가의 시스템 사고 (Layer 2 — 저자 본인 포함)"
+    C: "인접 학문 통찰 (Layer 3)"
+    D: "사상가·역사가 진단 (Layer 4)"
+    E: "역사적 평행 (Layer 5)"
+    F: "신학·철학 권위 (Layer 6, 선택)"
+
+  violation_handling:
+    hallucination_critical:
+      action: escalate_to_user_immediately
+      retry: false
+    metadata_incomplete_high:
+      action: escalate_to_user
+      retry: false
+    r4_single_authority_high:
+      action: exclude_from_pool
+      retry: false
+    weak_authority_medium:
+      action: warning_and_continue
+      retry: false
+
+  hallucination_signals:
+    - source_file_missing
+    - source_format_vague
+    - metadata_missing
+    - url_doi_invalid
+    - stat_no_source
+
+  r4_min_layers: 2
+
+  # 스킬 패키지에 동봉된 기본 권위 DB. 자신의 분야에 맞게 수정해서 쓰라.
+  authority_db_path: "{{SKILLS_ROOT}}/expert_pool/citation-authority-db.yaml"
+
+# ───────────────────────────────────────────────────────
+# 7. 외부 도구 연동 (선택)
+# ───────────────────────────────────────────────────────
+bridges:
+  notebooklm:
+    enabled: false                 # 쓰려면 true 로 바꾸고 notebooks 를 채울 것
+    sub_skill: bookwriting-notebooklm-bridge
+    notebooks:
+      # - notebook_id: "내-저서-전체"
+      #   purpose: voice_reference
+      []
+
+# ───────────────────────────────────────────────────────
+# 8. 참조 문서 경로
+# ───────────────────────────────────────────────────────
+v1_compatibility:
+  forecast_registry_path: "{{BOOK_ROOT}}/master/forecast-registry.yaml"
+  chapter_pipeline_path: "{{BOOK_ROOT}}/workflows/book-planning.md"
+  skeleton_path: "{{BOOK_ROOT}}/bookidea/skeleton.md"
+  use_v1_six_file_schema: true
+  use_v1_three_layer_structure: true
+
+# ───────────────────────────────────────────────────────
+# 9. 백업 정책
+# ───────────────────────────────────────────────────────
+backup_policy:
+  enabled: true
+  frequency: "on_every_write"
+  location: "{{BOOK_ROOT}}/master/.backups/"
+  rotation_count: 10
+  atomic_write: true
+  checksum_algorithm: "sha256"
+  encoding: "UTF-8"
+  schema_version_tracking: true
+
+# ───────────────────────────────────────────────────────
+# 10. 출판 메타데이터
+# ───────────────────────────────────────────────────────
+publication_metadata:
+  isbn: null
+  copyright: "© {{저자명}} {{생성연도}}"
+  publisher: null
+  edition: "초판"
+  expected_total_chars: 250000
+  target_total_pages: 350
+  language: "ko"
+  available_translations: []
+
+# ───────────────────────────────────────────────────────
+# 11. 작가성·AI 협업 명시 정책
+#     AI 생성 비율이 높아지면 공저 표기를 강제한다. 지우지 말 것.
+# ───────────────────────────────────────────────────────
+authorship_policy:
+  user_intervention_threshold: 0.70
+  ai_generation_warning: 0.50
+  promote_requires_explicit_user: true
+  paratext_disclosure_required: true
+
+# ───────────────────────────────────────────────────────
+# 12. 집필자 건강 정책 — 당신의 수면과 휴식을 지키는 게이트
+# ───────────────────────────────────────────────────────
+author_wellness_policy:
+  enabled: true
+  daily_cycle_max: 3
+  consecutive_hour_warn: 2
+  late_night_block_after: "23:00"
+  early_morning_block_before: "06:00"
+  break_recommendation_minutes: 15
+  weekly_max_cycles: 14
+  user_intervention_score_threshold: 0.5

@@ -1,0 +1,8 @@
+# seed-registry.yaml — 시드(생각의 씨앗) 대장
+#
+# 시드 하나 = 아직 문장이 되지 않은 착상 하나. S-001 부터 자동 채번된다.
+# 직접 손으로 고치기보다 `bookwriting seed register` 로 등록하라(ID 충돌 방지).
+
+version: "2.0"
+schema: seed-registry
+seeds: []

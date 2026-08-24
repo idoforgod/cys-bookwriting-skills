@@ -1,0 +1,8 @@
+# cycle-registry.yaml — 집필 사이클 대장
+#
+# 사이클 하나 = 시드 하나가 11단계를 통과한 기록. C-001 부터 자동 채번된다.
+# 각 항목은 entry_sha256 / previous_entry_hash 로 사슬처럼 이어져 위변조를 드러낸다.
+
+version: "2.0"
+schema: cycle-registry
+cycles: []

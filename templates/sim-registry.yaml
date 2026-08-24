@@ -1,0 +1,8 @@
+# sim-registry.yaml — 자동 시뮬레이션 대장 (SIM-NNN)
+#
+# Mode 2(전자동)의 산출물은 여기에만 쌓이고 정식 원고에 섞이지 않는다.
+# 정식 편입은 `bookwriting cycle promote` 를 당신이 명시적으로 호출할 때만 일어난다.
+
+version: "2.0"
+schema: sim-registry
+simulations: []
