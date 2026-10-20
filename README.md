@@ -48,7 +48,9 @@ AI에게 "이 주제로 한 챕터 써줘"라고 하면 그럴듯한 글이 나�
 
 여기에 선택 스킬 하나가 더 있다. `bookwriting-notebooklm-bridge` — NotebookLM 자료를 끌어오는 유일한 외부 통로이며, **당신이 명시적으로 부를 때만** 동작한다. 기본값은 꺼짐이다.
 
-합계 15개 = 11단계 + 상시 검문 2 + 오케스트레이터 1 + 선택 브리지 1.
+마지막 스킬은 `bookwriting-sentence-edit-master` — 원고를 붙여 넣으면 AI 말투와 자기반박을 걷어 내고 각주 번호·표·인용 출처를 지킨 채 다듬은 전문을 파일로 돌려주는 **최종 다듬기** 단계다. 파이프라인 밖에서 단독으로 부르며, 장르·분야·독자층과 무관한 범용 스킬이다.
+
+합계 16개 = 11단계 + 상시 검문 2 + 오케스트레이터 1 + 선택 브리지 1 + 최종 다듬기 1.
 
 ### 상시 검문 2종
 
@@ -100,7 +102,7 @@ cd cys-bookwriting-skills
 `install.sh`가 하는 일은 셋뿐이다.
 
 1. Python·PyYAML 확인 (없으면 PyYAML 설치 시도)
-2. `skills/` 아래 15개를 `~/.claude/skills/`에 **심볼릭 링크** (`--copy`로 복사 가능)
+2. `skills/` 아래 16개를 `~/.claude/skills/`에 **심볼릭 링크** (`--copy`로 복사 가능)
 3. `--book-root`를 주면 그 자리에 빈 책 프로젝트를 만든다
 
 설치 후 셸 설정(`~/.zshrc` 등)에 추가해 두면 편하다.
@@ -228,7 +230,7 @@ python3 lib/paths.py
 
 ```
 cys-bookwriting-skills/
-├── skills/          15개 스킬 (+ 70개 서브스킬)
+├── skills/          16개 스킬 (+ 70개 서브스킬)
 ├── lib/             결정론 모듈 18개 + paths.py
 ├── bin/             bookwriting.py (CLI)
 ├── templates/       init 이 펼치는 책 프로젝트 뼈대

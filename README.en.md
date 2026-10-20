@@ -50,7 +50,9 @@ The path from a seed idea to finished prose. Each stage is its own skill and con
 
 One optional skill sits alongside them: `bookwriting-notebooklm-bridge`, the only route to outside material, and it runs **only when you invoke it explicitly**. Off by default.
 
-That totals 15 = 11 pipeline stages + 2 gates + 1 orchestrator + 1 optional bridge.
+The last skill is `bookwriting-sentence-edit-master` — a **final polishing pass**: paste a manuscript and it strips AI phrasing and self-rebuttal, keeps footnote numbers, tables and citation sources intact, and returns the polished full text as a file. It runs standalone, outside the pipeline, and is genre-, field- and audience-agnostic.
+
+That totals 16 = 11 pipeline stages + 2 gates + 1 orchestrator + 1 optional bridge + 1 final polish.
 
 ### Two always-on gates
 
@@ -102,7 +104,7 @@ cd cys-bookwriting-skills
 `install.sh` does three things:
 
 1. Verifies Python and PyYAML (installs PyYAML if missing)
-2. **Symlinks** the 15 skills into `~/.claude/skills/` (use `--copy` to copy instead)
+2. **Symlinks** the 16 skills into `~/.claude/skills/` (use `--copy` to copy instead)
 3. Scaffolds an empty book project if you pass `--book-root`
 
 Add to your shell profile:
@@ -227,7 +229,7 @@ python3 lib/paths.py
 
 ```
 cys-bookwriting-skills/
-├── skills/          15 skills (+ 70 sub-skills)
+├── skills/          16 skills (+ 70 sub-skills)
 ├── lib/             18 deterministic modules + paths.py
 ├── bin/             bookwriting.py (CLI)
 ├── templates/       project scaffold used by `init`
